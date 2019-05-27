@@ -1,3 +1,6 @@
+"use strict";
+const assert = require("assert");
+
 //****************** List of People ***************************
 
 const arrOfPeople = [
@@ -58,7 +61,7 @@ const listOfPlayers = [];
 const blueTeam = [];
 const redTeam = [];
 
-//****************** Player Class ***************************
+//****************** Player Class ******************************
 
 //requires canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExperience
 class player {
@@ -163,7 +166,7 @@ class redTeammate {
   }
 }
 
-//Function that creates a the list of people from the array of objects at the top
+//Function that creates a list of people from the array of objects at the top
 let boolean = false;
 const listPeopleChoices = () => {
   if (boolean == true) {
@@ -342,3 +345,24 @@ const joinBlueTeam = id => {
   );
   playersBlue.append(li);
 };
+
+//Tests
+
+describe('Array', function() {
+  describe('#indexOf()', function() {
+    it('should return -1 when the value is not present', function(){
+      assert.equal(-1, [1,2,3].indexOf(4));
+    });
+  });
+});
+
+describe('arrOfPeople', function() {
+  it('person becomes a player', function() {
+    let newPlayer = new player('newPlayer.id', 'newPlayer.name', 'newPlayer.age', 'newPlayer.skillSet', 'newPlayer.placeBorn', true, true, true, true, 3)
+    assert.equal(newPlayer.hasPaid, true)
+  })
+  it('player becomes a teammate', function() {
+    let newBluePlayer = new blueTeammate('newBluePlayer.id', 'newBluePlayer.name', 'newBluePlayer.age', 'newBluePlayer.skillset', 'newBluePlayer.placeBorn', true, true, true, true, 3, "Chupacabra", "Blue")
+    assert.equal(newBluePlayer.mascot, "Chupacabra")
+  })
+})
